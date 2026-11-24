@@ -1,0 +1,40 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--inputs);
+  border-bottom: 1px solid var(--badges);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--header-height);
+}
+
+.logo {
+  position: absolute;
+  left: 64px;
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+  transition: color var(--transition);
+}
+
+.navLink:hover,
+.navLink:focus-visible,
+.active {
+  color: var(--grey-green);
+}
