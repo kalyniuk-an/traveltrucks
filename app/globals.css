@@ -85,3 +85,44 @@ img {
   border: 0;
   white-space: nowrap;
 }
+
+/*#region Buttons*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  padding: 16px 48px;
+  border: 1px solid transparent;
+  border-radius: 200px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.btn-primary {
+  color: var(--white);
+  background-color: var(--grey-green);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--green-hover);
+}
+
+.btn-outline {
+  color: var(--main);
+  background-color: var(--white);
+  border-color: var(--gray-light);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  border-color: var(--grey-green);
+}
+/*#endregion Buttons*/

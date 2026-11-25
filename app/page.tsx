@@ -15,7 +15,7 @@ export default function Home() {
       <div className={`container ${css.content}`}>
         <h1 className={css.title}>Campers of your dreams</h1>
         <p className={css.text}>You can find everything you want in our catalog</p>
-        <Link href="/catalog" className={css.button}>
+        <Link href="/catalog" className="btn btn-primary">
           View Now
         </Link>
       </div>
