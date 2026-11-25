@@ -1,0 +1,18 @@
+.wrapper {
+  min-height: calc(100vh - var(--header-height));
+  padding: 440px 16px 48px;
+  background: url('/camper-search.jpg') center 48px/360px no-repeat;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.text {
+  margin-bottom: 32px;
+  color: var(--text);
+}
