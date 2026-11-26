@@ -3,20 +3,19 @@
 import { BsMap } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
 import { CAMPER_FORMS, ENGINES, TRANSMISSIONS } from '@/constants/filters';
-import type { CamperFilters } from '@/types/filters';
+import { useFiltersStore } from '@/lib/store/filtersStore';
 import css from './Filters.module.css';
 
-interface FiltersProps {
-  onSearch: (filters: CamperFilters) => void;
-  onClear: () => void;
-}
+export default function Filters() {
+  const filters = useFiltersStore(state => state.filters);
+  const setFilters = useFiltersStore(state => state.setFilters);
+  const resetFilters = useFiltersStore(state => state.resetFilters);
 
-export default function Filters({ onSearch, onClear }: FiltersProps) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    onSearch({
+    setFilters({
       location: String(data.get('location') ?? '').trim(),
       form: String(data.get('form') ?? ''),
       engine: String(data.get('engine') ?? ''),
@@ -25,7 +24,7 @@ export default function Filters({ onSearch, onClear }: FiltersProps) {
   };
 
   return (
-    <form id="filters" className={css.filters} onSubmit={handleSubmit} onReset={onClear}>
+    <form id="filters" className={css.filters} onSubmit={handleSubmit} onReset={resetFilters}>
       <div>
         <label htmlFor="location" className={css.label}>
           Location
@@ -37,6 +36,7 @@ export default function Filters({ onSearch, onClear }: FiltersProps) {
             name="location"
             type="text"
             placeholder="City"
+            defaultValue={filters.location}
             className={css.input}
           />
         </div>
@@ -48,7 +48,13 @@ export default function Filters({ onSearch, onClear }: FiltersProps) {
         <legend className={css.groupTitle}>Camper form</legend>
         {CAMPER_FORMS.map(({ label, value }) => (
           <label key={value} className={css.radio}>
-            <input type="radio" name="form" value={value} className={css.radioInput} />
+            <input
+              type="radio"
+              name="form"
+              value={value}
+              defaultChecked={filters.form === value}
+              className={css.radioInput}
+            />
             {label}
           </label>
         ))}
@@ -58,7 +64,13 @@ export default function Filters({ onSearch, onClear }: FiltersProps) {
         <legend className={css.groupTitle}>Engine</legend>
         {ENGINES.map(({ label, value }) => (
           <label key={value} className={css.radio}>
-            <input type="radio" name="engine" value={value} className={css.radioInput} />
+            <input
+              type="radio"
+              name="engine"
+              value={value}
+              defaultChecked={filters.engine === value}
+              className={css.radioInput}
+            />
             {label}
           </label>
         ))}
@@ -68,7 +80,7 @@ export default function Filters({ onSearch, onClear }: FiltersProps) {
         <legend className={css.groupTitle}>Transmission</legend>
         {TRANSMISSIONS.map(({ label, value }) => (
           <label key={value} className={css.radio}>
-            <input type="radio" name="transmission" value={value} className={css.radioInput} />
+            <input type="radio" name="transmission" value={value} defaultChecked={filters.transmission === value} className={css.radioInput} />
             {label}
           </label>
         ))}
