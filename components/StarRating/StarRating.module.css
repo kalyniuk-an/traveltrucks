@@ -1,0 +1,18 @@
+.star{
+  display: flex;
+  gap: 4px;
+}
+
+.filled,
+.empty{
+  width: 16px;
+  height: 16px;
+}
+
+.filled{
+  color: var(--rating);
+}
+
+.empty{
+  color: var(--gray-light);
+}
