@@ -1,0 +1,28 @@
+.empty {
+  padding: 440px 48px 80px;
+  border-radius: 20px;
+  background: var(--inputs) url('/camper-search.png') center 24px / 420px no-repeat;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--main);
+}
+
+.text {
+  margin-bottom: 43px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
