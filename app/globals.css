@@ -127,3 +127,22 @@ img {
   border-color: var(--grey-green);
 }
 /*#endregion Buttons*/
+
+.status-page {
+  min-height: calc(100vh - var(--header-height));
+  padding: 440px 16px 48px;
+  background: url('/camper-search.png') center 48px/360px no-repeat;
+  text-align: center;
+}
+
+.status-title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.status-text {
+  margin-bottom: 32px;
+  color: var(--text);
+}
