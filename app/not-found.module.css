@@ -1,7 +1,7 @@
 .wrapper {
   min-height: calc(100vh - var(--header-height));
   padding: 440px 16px 48px;
-  background: url('/camper-search.jpg') center 48px/360px no-repeat;
+  background: url('/camper-search.png') center 48px/360px no-repeat;
   text-align: center;
 }
 
