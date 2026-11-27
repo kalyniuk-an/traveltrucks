@@ -4,7 +4,12 @@ import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { MdErrorOutline } from 'react-icons/md';
+import { createBooking } from '@/lib/api';
 import css from './BookingForm.module.css';
+
+interface BookingFormProps {
+  camperId: string;
+}
 
 interface BookingFormValues {
   name: string;
@@ -21,21 +26,20 @@ const bookingSchema = Yup.object({
     .trim()
     .matches(/^[\p{L}\s'-]{2,}$/u, 'Please enter your name.')
     .required('Please enter your name.'),
-  email: Yup.string()
-    .trim()
-    .email('Please enter your email.')
-    .required('Please enter your email.'),
+  email: Yup.string().trim().email('Please enter your email.').required('Please enter your email.'),
 });
 
-export default function BookingForm() {
+export default function BookingForm({camperId}: BookingFormProps) {
   const handleSubmit = async (
     values: BookingFormValues,
     actions: FormikHelpers<BookingFormValues>
   ) => {
     try {
-      // TODO: коли буде API — await createBooking(camperId, values);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      toast.success('Your campervan has been successfully booked!');
+      const { message } = await createBooking(camperId, {
+        name: values.name.trim(),
+        email: values.email.trim(),
+      });
+      toast.success(message);
       actions.resetForm();
     } catch {
       toast.error('Something went wrong. Please try again.');
@@ -43,11 +47,7 @@ export default function BookingForm() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={bookingSchema}
-      onSubmit={handleSubmit}
-    >
+    <Formik initialValues={initialValues} validationSchema={bookingSchema} onSubmit={handleSubmit}>
       {({ errors, touched, isSubmitting }) => {
         const nameError = touched.name && errors.name;
         const emailError = touched.email && errors.email;
