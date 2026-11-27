@@ -1,0 +1,68 @@
+.page {
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 638px 1fr;
+  gap: 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  padding: 24px;
+  border-radius: 10px;
+  background-color: var(--inputs);
+}
+
+.name {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.price {
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.description {
+  color: var(--text);
+}
+
+.bottom {
+  margin-top: 80px;
+}
+
+.reviewsTitle {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.noReviews {
+  color: var(--text);
+}
