@@ -3,6 +3,7 @@
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 import { useFiltersStore } from '@/lib/store/filtersStore';
 import { fetchCampers } from '@/lib/api';
+import CamperCard from '../CamperCard/CamperCard';
 import EmptyState from '@/components/EmptyState/EmptyState';
 import Loader from '@/components/Loader/Loader';
 import css from './CampersList.module.css';
@@ -50,7 +51,9 @@ export default function CampersList() {
       ) : (
         <ul className={css.list}>
           {campers.map((camper) => (
-            <li key={camper.id}>{camper.name}</li>
+            <li key={camper.id}>
+              <CamperCard camper={camper}/>
+            </li>
           ))}
         </ul>
       )}
