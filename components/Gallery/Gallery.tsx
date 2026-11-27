@@ -33,7 +33,8 @@ export default function Gallery({ images, alt }: GalleryProps) {
               alt={`${alt}, photo ${index + 1}`}
               fill
               sizes="638px"
-              preload={index === 0}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
               className={css.image}
             />
           </SwiperSlide>
@@ -48,9 +49,15 @@ export default function Gallery({ images, alt }: GalleryProps) {
         watchSlidesProgress
         className={css.slider}
       >
-        {images.map((image) => (
+        {images.map((image, index) => (
           <SwiperSlide key={image.id} className={css.thumb}>
-            <Image src={image.thumb} alt="" fill sizes="136px" className={css.image} />
+            <Image
+              src={image.thumb}
+              alt=""
+              fill
+              sizes="136px"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              className={css.image} />
           </SwiperSlide>
         ))}
       </Swiper>

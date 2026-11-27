@@ -9,14 +9,21 @@ import css from './CamperCard.module.css';
 
 interface CamperCardProps {
   camper: CamperListItem;
+  isFirst?: boolean;
 }
 
-export default function CamperCard({ camper }: CamperCardProps) {
+export default function CamperCard({ camper, isFirst }: CamperCardProps) {
   const { id, name, price, rating, totalReviews, location, description, coverImage } = camper;
 
   return (
     <article className={css.card}>
-      <Image src={coverImage} alt={name} width={224} height={240} className={css.image} />
+      <Image src={coverImage}
+        alt={name}
+        width={224}
+        height={240}
+        loading={isFirst ? 'eager' : 'lazy'}
+        className={css.image}
+      />
 
       <div className={css.content}>
         <div className={css.header}>

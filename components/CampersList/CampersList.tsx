@@ -50,9 +50,9 @@ export default function CampersList() {
         <EmptyState />
       ) : (
         <ul className={css.list}>
-          {campers.map((camper) => (
+          {campers.map((camper, index) => (
             <li key={camper.id}>
-              <CamperCard camper={camper}/>
+              <CamperCard camper={camper} isFirst={index===0} />
             </li>
           ))}
         </ul>
