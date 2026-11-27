@@ -1,0 +1,36 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  width: 638px;
+  min-width: 0;
+}
+
+.slide {
+  position: relative;
+  height: 492px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thumb {
+  position: relative;
+  height: 144px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.thumb:global(.swiper-slide-thumb-active) {
+  border-color: var(--grey-green);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.slider {
+  width: 100%;
+}
