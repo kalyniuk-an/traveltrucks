@@ -1,0 +1,20 @@
+.meta {
+  display: flex;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star,
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.star {
+  color: var(--rating);
+}
