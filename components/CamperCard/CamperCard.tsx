@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { BsFuelPump, BsDiagram3, BsCarFront } from 'react-icons/bs';
 import CamperMeta from '@/components/CamperMeta/CamperMeta';
 import Badge from '@/components/Badge/Badge';
-import { CAMPER_FORMS, ENGINES, TRANSMISSIONS } from '@/constants/filters';
-import { getLabel } from '@/lib/utils';
+import { formatLabel } from '@/lib/utils';
 import type { CamperListItem } from '@/types/camper';
 import css from './CamperCard.module.css';
 
@@ -31,13 +30,13 @@ export default function CamperCard({ camper }: CamperCardProps) {
 
         <ul className={css.badges}>
           <li>
-            <Badge label={getLabel(ENGINES, camper.engine)} icon={BsFuelPump} />
+            <Badge label={formatLabel(camper.engine)} icon={BsFuelPump} />
           </li>
           <li>
-            <Badge label={getLabel(TRANSMISSIONS, camper.transmission)} icon={BsDiagram3} />
+            <Badge label={formatLabel(camper.transmission)} icon={BsDiagram3} />
           </li>
           <li>
-            <Badge label={getLabel(CAMPER_FORMS, camper.form)} icon={BsCarFront} />
+            <Badge label={formatLabel(camper.form)} icon={BsCarFront} />
           </li>
         </ul>
 

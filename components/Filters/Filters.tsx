@@ -2,11 +2,16 @@
 
 import { BsMap } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
-import { CAMPER_FORMS, ENGINES, TRANSMISSIONS } from '@/constants/filters';
+import { formatLabel } from '@/lib/utils';
+import type { FiltersResponse } from '@/types/camper';
 import { useFiltersStore } from '@/lib/store/filtersStore';
 import css from './Filters.module.css';
 
-export default function Filters() {
+interface FiltersProps {
+  options: FiltersResponse;
+}
+
+export default function Filters({options}: FiltersProps) {
   const filters = useFiltersStore(state => state.filters);
   const setFilters = useFiltersStore(state => state.setFilters);
   const resetFilters = useFiltersStore(state => state.resetFilters);
@@ -46,42 +51,48 @@ export default function Filters() {
 
       <fieldset className={css.group}>
         <legend className={css.groupTitle}>Camper form</legend>
-        {CAMPER_FORMS.map(({ label, value }) => (
-          <label key={value} className={css.radio}>
+        {options.forms.map((form) => (
+          <label key={form} className={css.radio}>
             <input
               type="radio"
               name="form"
-              value={value}
-              defaultChecked={filters.form === value}
+              value={form}
+              defaultChecked={filters.form === form}
               className={css.radioInput}
             />
-            {label}
+            {formatLabel(form)}
           </label>
         ))}
       </fieldset>
 
       <fieldset className={css.group}>
         <legend className={css.groupTitle}>Engine</legend>
-        {ENGINES.map(({ label, value }) => (
-          <label key={value} className={css.radio}>
+        {options.engines.map((engine) => (
+          <label key={engine} className={css.radio}>
             <input
               type="radio"
               name="engine"
-              value={value}
-              defaultChecked={filters.engine === value}
+              value={engine}
+              defaultChecked={filters.engine === engine}
               className={css.radioInput}
             />
-            {label}
+            {formatLabel(engine)}
           </label>
         ))}
       </fieldset>
 
       <fieldset className={css.group}>
         <legend className={css.groupTitle}>Transmission</legend>
-        {TRANSMISSIONS.map(({ label, value }) => (
-          <label key={value} className={css.radio}>
-            <input type="radio" name="transmission" value={value} defaultChecked={filters.transmission === value} className={css.radioInput} />
-            {label}
+        {options.transmissions.map((transmission) => (
+          <label key={transmission} className={css.radio}>
+            <input
+              type="radio"
+              name="transmission"
+              value={transmission}
+              defaultChecked={filters.transmission === transmission}
+              className={css.radioInput}
+            />
+            {formatLabel(transmission)}
           </label>
         ))}
       </fieldset>

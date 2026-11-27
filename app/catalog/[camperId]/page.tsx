@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import axios from 'axios';
 import { fetchCamperById, fetchReviews } from '@/lib/api';
-import { formatUnit, getLabel } from '@/lib/utils';
-import { CAMPER_FORMS, ENGINES, TRANSMISSIONS } from '@/constants/filters';
+import { formatLabel, formatUnit, getLabel } from '@/lib/utils';
 import { AMENITIES } from '@/constants/amenities';
 import Gallery from '@/components/Gallery/Gallery';
 import CamperMeta from '@/components/CamperMeta/CamperMeta';
@@ -44,14 +43,14 @@ export default async function CamperPage({ params }: CamperPageProps) {
   const reviews = await fetchReviews(camperId).catch(() => []);
 
   const features = [
-    getLabel(TRANSMISSIONS, camper.transmission),
-    getLabel(ENGINES, camper.engine),
+    formatLabel(camper.transmission),
+    formatLabel(camper.engine),
     ...camper.amenities.map((amenity) => getLabel(AMENITIES, amenity)),
-    getLabel(CAMPER_FORMS, camper.form),
+    formatLabel(camper.form),
   ];
 
   const details = [
-    { label: 'Form', value: getLabel(CAMPER_FORMS, camper.form) },
+    { label: 'Form', value: formatLabel(camper.form) },
     { label: 'Length', value: formatUnit(camper.length) },
     { label: 'Width', value: formatUnit(camper.width) },
     { label: 'Height', value: formatUnit(camper.height) },

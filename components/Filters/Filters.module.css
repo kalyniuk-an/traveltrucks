@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex-shrink: 0;
   padding: 24px;
   width: 360px;
   border-radius: 20px;
@@ -24,6 +25,7 @@
   left: 20px;
   width: 20px;
   height: 20px;
+  color: var(--text);
   transform: translateY(-50%);
 }
 
@@ -49,7 +51,6 @@
 }
 
 .title {
-  margin-bottom: 24px;
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
@@ -87,7 +88,7 @@
   width: 20px;
   height: 20px;
   margin: 0;
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--text);
   border-radius: 50%;
   appearance: none;
   cursor: pointer;
@@ -99,7 +100,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--main);
+  background-color: var(--text);
   transform: scale(0);
   transition: transform var(--transition);
 }
