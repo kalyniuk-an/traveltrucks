@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Header from '@/components/Header/Header';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,9 +29,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Header />
-        <main>{children}</main>
-        <Toaster position="top-right"/>
+        <TanStackProvider>
+          <Header />
+          <main>{children}</main>
+          <Toaster position="top-right" />
+        </TanStackProvider>
       </body>
     </html>
   );
